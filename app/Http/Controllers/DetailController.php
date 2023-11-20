@@ -96,9 +96,9 @@ class DetailController extends Controller
                         ->select('habit_id', DB::raw('MAX(streak) AS max_streak'))
                         ->groupBy('habit_id')
                         ->setBindings([':habit_id'=> $id])
-                        ->get();
+                        ->get()->toArray();
 
-                        dd($max_continuous_days);
+                        //dd($max_continuous_days);
 
         // 表示している月の前月、翌月の年月を取得。（ビューファイルに渡す変数）
         $prev = date('Y-m', strtotime('-1 month', $timestamp));
@@ -148,31 +148,42 @@ class DetailController extends Controller
             // 2023-09-9という形のものを作っておく
             $date= $ym.'-'.$i;
 
-            foreach ($habit_all as $habit_each) {
-            
-                // DB上の値'2023-10-15 00:00:00'を'2023-10-9'に変更する
-                $achieved_day = date('Y-m-j', strtotime($habit_each['achieved_at']));
+            // 達成した日が0日の場合
+            if (empty($habit_all)) {
 
-                // 達成している日の場合の処理   
-                if ($achieved_day == $date) {
+                $calendar[$week_number][$day_number][1] = '';
+                // 日付が今日の場合
+                if ($date == $today) {
+                    $calendar[$week_number][$day_number][1] = 'not_achieve_today';
+                }
+            // 達成した日が1日以上の場合    
+            } else {
+                foreach ($habit_all as $habit_each) {
+                
+                    // DB上の値'2023-10-15 00:00:00'を'2023-10-9'に変更する
+                    $achieved_day = date('Y-m-j', strtotime($habit_each['achieved_at']));
 
-                    // 今日以外で達成している場合
-                    $calendar[$week_number][$day_number][1] = 'achieved';
-                    // 今日達成している場合
-                    if ($date == $today) {
+                    // 達成している日の場合の処理   
+                    if ($achieved_day == $date) {
 
-                        $calendar[$week_number][$day_number][1] = 'achieved_today';
+                        // 今日以外で達成している場合
+                        $calendar[$week_number][$day_number][1] = 'achieved';
+                        // 今日達成している場合
+                        if ($date == $today) {
+
+                            $calendar[$week_number][$day_number][1] = 'achieved_today';
+                            break;
+                        }
                         break;
-                    }
-                    break;
 
-                // 達成していない日の場合の処理
-                } else {
+                    // 達成していない日の場合の処理
+                    } else {
 
-                    $calendar[$week_number][$day_number][] = '';
-                    // 達成していないが、日付が今日の場合
-                    if ($date == $today) {
-                        $calendar[$week_number][$day_number][1] = 'not_achieve_today';
+                        $calendar[$week_number][$day_number][1] = '';
+                        // 達成していないが、日付が今日の場合
+                        if ($date == $today) {
+                            $calendar[$week_number][$day_number][1] = 'not_achieve_today';
+                        }
                     }
                 }
             }
