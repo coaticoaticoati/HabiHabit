@@ -96,8 +96,11 @@ class MemoController extends Controller
             $calendar_of_memo[$i]['day'] = $i;
             // 例：2023-09-1
             $date = $ym . '-' . $i; 
+            // $date（例：2023-09-1）を代入する
+            $calendar_of_memo[$i]['date'] = $date;
             // 曜日を取得し、代入する
             $calendar_of_memo[$i]['week'] = date('w', strtotime($date));
+
             // メモの入力がある日は、$calendar_memoのメモ内容を代入する
             if (isset($calendar_memo[$i])) {
                 $calendar_of_memo[$i]['memo'] = $calendar_memo[$i];
@@ -105,6 +108,7 @@ class MemoController extends Controller
             } else {
                 $calendar_of_memo[$i]['memo'] = '';
             }
+            
             // 習慣を達成した日は、$calendar_achieの内容を代入する
             if (isset($calendar_achie[$i])) {
                 $calendar_of_memo[$i]['achievement'] = $calendar_achie[$i];
@@ -114,13 +118,6 @@ class MemoController extends Controller
             }
         }
         $week_jp = ['日', '月', '火', '水', '木', '金', '土'];
-
-        
-        
-
-
-        
-        
         
         return view('habit.memo', compact('habit_detail', 'this_month_ym', 'prev', 'next', 'ym',
         'calendar_of_memo', 'week_jp', 'this_year', 'this_month'));
@@ -131,7 +128,9 @@ class MemoController extends Controller
         // メモの入力がある日は内容を取得
         $memo = Memo::where('habit_id', '=', $id)->whereDate('registered_on', '=', $day)->first();
 
-        return view('habit.edit-memo', compact('memo', 'id', 'day'));
+        $date= date('Y年m月j日', strtotime($day));
+
+        return view('habit.edit-memo', compact('memo', 'id', 'day', 'date'));
     }
     
     // メモを編集

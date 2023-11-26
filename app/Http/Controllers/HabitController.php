@@ -54,6 +54,7 @@ class HabitController extends Controller
         $habit_list = Habit::where('user_id', '=', $user_id)->where('archive', '=', null)->paginate(10);
         // レコードのidカラムのみを抽出
         $habit_id = Habit::where('user_id', '=', $user_id)->value('id'); 
+
         // 習慣の登録が無い場合、新規登録画面を表示
         if (empty($habit_id)) {
            

@@ -8,6 +8,9 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\View\View;
+use App\Models\Habit;
+use App\Models\Record;
+use App\Models\Memo;
 
 class ProfileController extends Controller
 {
@@ -46,6 +49,15 @@ class ProfileController extends Controller
             'password' => ['required', 'current_password'],
         ]);
 
+        // ユーザーの習慣、実績、メモを削除
+        $user_id = Auth::id();
+        $habit_list = Habit::where('user_id', '=', $user_id)->get()->toArray();
+        foreach ($habit_list as $habit_item) {
+            Habit::where('id', '=', $habit_item['id'])->delete();
+            Record::where('habit_id', '=', $habit_item['id'])->delete();
+            Memo::where('habit_id', '=', $habit_item['id'])->delete();
+        }
+
         $user = $request->user();
 
         Auth::logout();
@@ -55,6 +67,6 @@ class ProfileController extends Controller
         $request->session()->invalidate();
         $request->session()->regenerateToken();
 
-        return Redirect::to('/');
+        return Redirect::to('register');
     }
 }

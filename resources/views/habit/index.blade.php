@@ -40,15 +40,16 @@
                     習慣一覧
                 </p>
                 @foreach ($habit_list as $habit_item) 
-                    <p class="text-xl text-gray-700 border-t border-gray-200/75 py-6">
+                    <p class="text-xl text-gray-700 border-t border-gray-200/75 pt-4 mb-4 mt-4">
                         <span class="text-amber-400">● </span>{{ $habit_item->name }}
                             @if (isset($habit_item->goal))
                                 　目標：{{ $habit_item->goal }}  
                             @endif    
                     </p>
-                    
-                    <a href="/habit/detail/{{ $habit_item->id }}" class="bg-emerald-400 text-base text-white py-1 px-1 my-2 rounded-full">実績の詳細</a>
-                    <a href="/habit/memo/{{ $habit_item->id }}" class="bg-emerald-400 text-base text-white py-1 px-1 my-2 rounded-full">メモ</a>
+                    <div class="">
+                        <a href="/habit/detail/{{ $habit_item->id }}" class="bg-emerald-400 text-base text-white py-1 px-2 ml-4 rounded-full">実績の詳細</a>
+                        <a href="/habit/memo/{{ $habit_item->id }}" class="bg-emerald-400 text-base text-white py-1 px-2 ml-2 rounded-full">メモ</a>
+                    </div> 
                 @endforeach
                 
                 <!-- ペジネーション -->

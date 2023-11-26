@@ -98,8 +98,6 @@ class DetailController extends Controller
                         ->setBindings([':habit_id'=> $id])
                         ->get()->toArray();
 
-                        //dd($max_continuous_days);
-
         // 表示している月の前月、翌月の年月を取得。（ビューファイルに渡す変数）
         $prev = date('Y-m', strtotime('-1 month', $timestamp));
         $next = date('Y-m', strtotime('+1 month', $timestamp));

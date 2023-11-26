@@ -7,7 +7,7 @@
                 <form action="{{ route('habit.update_memo', ['id' => $id, 'day' => $day]) }}" method="post">
                     @csrf
                     @method('patch')
-                    <p class="text-gray-700">{{ $day }}のメモを編集します。</p>
+                    <p class="text-gray-700 mb-4 text-xl">{{ $date }}のメモを編集します。</p>
                     <!-- エラーメッセージ -->
                     @if ($errors->any())
                         <div>

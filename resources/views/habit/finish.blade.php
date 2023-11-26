@@ -7,9 +7,6 @@
                 <p class="text-lg font-medium text-gray-700 mb-4">
                     お疲れさまでした。この調子でいきましょう!
                 </p>
-                <p class="text-lg font-medium text-gray-700 mb-4">
-                    日継続中!
-                </p>
                 <a href="{{ route('habit.show_detail', ['id' => $habit_id]) }}">実績の詳細を見る</a>
                 <a href="{{ route('habit.show_memo', ['id' => $habit_id]) }}">メモを見る</a>
             </div>
