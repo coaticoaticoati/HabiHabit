@@ -34,7 +34,6 @@
                         @endif   
                         <input class="border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm block w-3/5"
                         type="text" name="habit_goal" placeholder="夏までに3キロ痩せる" value="{{ old('habit_goal', $habit_detail->goal) }}">
-                        
                     </div>
                 
                 <div class="mt-5">
