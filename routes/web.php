@@ -7,7 +7,6 @@ use App\Http\Controllers\DetailController;
 use App\Http\Controllers\ArchiveController;
 use App\Http\Controllers\MemoController;
 
-
 /*
 |--------------------------------------------------------------------------
 | Web Routes
