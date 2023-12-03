@@ -18,11 +18,6 @@
                         </h3>
                     @endif
                 </div>
-
-                <div class="justify-center flex">
-                    <a href="{{ route('habit.show_memo', ['id' => $habit_detail->id]) }}" 
-                    class="bg-emerald-400 text-base text-white py-1 px-2 my-2 rounded-full">memo</a> 
-                </div>
                 
                 <div class="justify-center flex text-lg mb-2">
                     <p class="text-gray-700">
@@ -37,21 +32,23 @@
                 </div> 
 
                 <!-- セレクトボックス -->
-                <form action="{{ route('habit.show_detail',  ['id' => $habit_detail->id]) }}" method="get" class="justify-center flex">
+                <form action="{{ route('detail.show',  ['id' => $habit_detail->id]) }}" method="get" class="justify-center flex">
                     <select name="year" class="text-gray-700 border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm">
-                        @for ($i = 1970; $i <= 2035; $i++)
+                        @for ($i = 1990; $i <= 2035; $i++)
                             @if ($i == $this_year)
                                 <option value="{{ $i }}" selected>{{ $i }}年</option>
-                            @endif
+                            @else
                             <option value="{{ $i }}">{{ $i }}年</option>
+                            @endif
                         @endfor   
                     </select>
                     <select name="month" class="text-gray-700 border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm ml-2">
                         @for ($i = 1; $i <= 12; $i++)
                             @if ($i == $this_month)
                                 <option value="{{ $i }}" selected>{{ $i }}月</option>
+                            @else
+                                <option value="{{ $i }}">{{ $i }}月</option>
                             @endif
-                            <option value="{{ $i }}">{{ $i }}月</option>
                         @endfor   
                     </select>
                     <x-primary-button class="ml-2">移動</x-primary-button>
@@ -107,6 +104,12 @@
                         @endforeach    
                     </table>
                 </div>
+                
+                <div class="justify-center flex">
+                    <a href="{{ route('memo.show_from_detail', ['id' => $habit_detail->id, 'ym' => $ym]) }}" 
+                    class="bg-emerald-400 text-base text-white py-1 px-2 my-2 rounded-full">メモに移動</a> 
+                </div>
+
             </div>
 
             <!-- 実績の削除 -->
@@ -125,7 +128,7 @@
                     </div>
                 @endif
                 <!-- カレンダーとボタン -->  
-                <form action="{{ route('habit.destroy_detail', ['id' => $habit_detail->id]) }}" method="post">
+                <form action="{{ route('detail.destroy', ['id' => $habit_detail->id]) }}" method="post">
                     @csrf
                     @method('delete')
                     <input type="date" name="delete_date" class="rounded-md">

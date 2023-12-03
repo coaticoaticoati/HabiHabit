@@ -26,7 +26,7 @@ class ArchiveController extends Controller
             'archive' => 1,
         ]);
 
-        return redirect(route('habit.archive'));
+        return redirect(route('archive.show'));
     }
 
     // アーカイブ一覧を表示

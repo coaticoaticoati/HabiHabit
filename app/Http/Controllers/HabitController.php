@@ -21,7 +21,7 @@ class HabitController extends Controller
     }
 
     // 新規登録のフォームの内容をデータベースに保存
-    public function store_habit(Request $request) { // Request $requestでフォームから送信されたデータを受けとっている
+    public function store_habit_name(Request $request) { // Request $requestでフォームから送信されたデータを受けとっている
         
         // バリデーション
         $request->validate([
@@ -58,7 +58,7 @@ class HabitController extends Controller
         // 習慣の登録が無い場合、新規登録画面を表示
         if (empty($habit_id)) {
            
-            return redirect(route('habit.create_habit'));
+            return redirect(route('habit.create'));
 
         } else { // 習慣の登録が1つ以上ある場合、習慣一覧（トップ画面）を表示
 
@@ -68,7 +68,7 @@ class HabitController extends Controller
     }
 
     // 実行した習慣を登録
-    public function store_habit_date(Request $request) { 
+    public function store_habit(Request $request) { 
 
         // バリデーション
         $request->validate([
@@ -98,7 +98,7 @@ class HabitController extends Controller
     }
 
     // 習慣の名前、目標を編集する画面を表示
-    public function show_edit_habit_name($id) {
+    public function show_habit_name_edit($id) {
 
         $habit_detail = Habit::find($id);
 
@@ -126,11 +126,11 @@ class HabitController extends Controller
             'goal' => $request->habit_goal
         ]);
 
-        return redirect()->route('habit.show_detail', ['id' => $id]);
+        return redirect()->route('detail.show', ['id' => $id]);
     }
 
     // 習慣削除画面を表示
-    public function show_delete_habit($id) {
+    public function show_habit_deletion($id) {
 
         $habit_detail = Habit::find($id);
 

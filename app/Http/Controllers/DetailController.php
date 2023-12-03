@@ -40,6 +40,7 @@ class DetailController extends Controller
         if (isset($_GET['ym'])) {
 
             $ym = $_GET['ym'];
+
         // セレクトボックスから選択された場合
         } elseif (isset($_GET['year']) && isset($_GET['month'])) {
 
@@ -51,6 +52,7 @@ class DetailController extends Controller
             // 押されていない場合は今月を表示
             $ym = date('Y-m');
         }
+
         // $ymからタイムスタンプを作成
         $timestamp = strtotime($ym.'-01'); // 例：2023-09-01
 
@@ -199,7 +201,7 @@ class DetailController extends Controller
 
         return view('habit.detail', compact('habit_detail', 'this_y_m', 'this_y', 'this_m', 'year_record', 
         'month_record', 'this_y_day', 'day_count', 'prev', 'next', 'calendars', 'week_jp', 'min_achievement_date', 
-        'total_achievement_date', 'this_year', 'this_month', 'max_continuous_days'));
+        'total_achievement_date', 'this_year', 'this_month', 'max_continuous_days','ym'));
     }
 
     // 達成した日を削除

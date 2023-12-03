@@ -15,10 +15,10 @@
                     <x-nav-link :href="route('habit.index')" :active="request()->routeIs('habit.index')">
                         HOME
                     </x-nav-link>
-                    <x-nav-link :href="route('habit.create_habit')" :active="request()->routeIs('habit.create_habit')">
+                    <x-nav-link :href="route('habit.create')" :active="request()->routeIs('habit.create')">
                         新規作成
                     </x-nav-link>
-                    <x-nav-link :href="route('habit.archive')" :active="request()->routeIs('habit.archive')">
+                    <x-nav-link :href="route('archive.show')" :active="request()->routeIs('archive.show')">
                         ARCHIVE
                     </x-nav-link>
                 </div>
@@ -76,10 +76,10 @@
             <x-responsive-nav-link :href="route('habit.index')" :active="request()->routeIs('habit.index')">
                 HOME
             </x-responsive-nav-link>
-            <x-responsive-nav-link :href="route('habit.create_habit')" :active="request()->routeIs('habit.create_habit')">
+            <x-responsive-nav-link :href="route('habit.create')" :active="request()->routeIs('habit.create')">
                 新規作成
             </x-responsive-nav-link>
-            <x-responsive-nav-link :href="route('habit.create_habit')" :active="request()->routeIs('habit.create_habit')">
+            <x-responsive-nav-link :href="route('archive.show')" :active="request()->routeIs('archive.show')">
                 ARCHIVE
             </x-responsive-nav-link>
         </div>

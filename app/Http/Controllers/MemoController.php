@@ -120,17 +120,18 @@ class MemoController extends Controller
         $week_jp = ['日', '月', '火', '水', '木', '金', '土'];
         
         return view('habit.memo', compact('habit_detail', 'this_month_ym', 'prev', 'next', 'ym',
-        'calendar_of_memo', 'week_jp', 'this_year', 'this_month'));
+        'calendar_of_memo', 'week_jp', 'this_year', 'this_month', 'ym'));
     }
 
     // メモ編集画面を表示
-    public function show_edit_memo($id, $day) {
+    public function show_memo_edit($id, $day) {
         // メモの入力がある日は内容を取得
         $memo = Memo::where('habit_id', '=', $id)->whereDate('registered_on', '=', $day)->first();
 
         $date= date('Y年m月j日', strtotime($day));
-
+        
         return view('habit.edit-memo', compact('memo', 'id', 'day', 'date'));
+        
     }
     
     // メモを編集
@@ -142,7 +143,7 @@ class MemoController extends Controller
         [
             'habit_memo.max' => '50文字以内で入力してください。'
         ]);
-        //バリデーションにパスした後の処理
+        // バリデーションにパスした後の処理
         Memo::updateOrCreate([
             'habit_id' => $id,
             'registered_on' => $day
@@ -151,11 +152,14 @@ class MemoController extends Controller
             'text' => $request->habit_memo
         ]);
 
+        // メモを空欄にした場合
         if (empty($request->habit_memo)) {
 
             Memo::where('habit_id', '=', $id)->whereDate('registered_on', '=', $day)->delete();
         }
 
-        return redirect()->route('habit.show_memo', ['id' => $id]);
+        $ym = date('Y-m', strtotime($day));
+
+        return redirect()->route('memo.show_from_detail', ['id' => $id, 'ym' => $ym]);
     }
 }
