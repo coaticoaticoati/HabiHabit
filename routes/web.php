@@ -40,9 +40,6 @@ Route::get('habit', [HabitController::class, 'index_list'])->name('habit.index')
 // 実行した習慣を登録
 Route::post('habit/index', [HabitController::class, 'store_habit'])->name('habit.store'); 
 
-// ↑登録完了画面を表示
-Route::get('habit/finish', [HabitController::class, 'store_habit'])->middleware('auth');
-
 
 // 習慣の新規登録画面を表示
 Route::get('habit/create', [HabitController::class, 'create_habit'])->name('habit.create')->middleware('auth');

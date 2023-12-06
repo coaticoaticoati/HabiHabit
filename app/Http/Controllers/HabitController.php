@@ -53,7 +53,10 @@ class HabitController extends Controller
         // 1ページごとに10項目を表示するようにペジネーションする
         $habit_list = Habit::where('user_id', '=', $user_id)->where('archive', '=', null)->paginate(10);
         // レコードのidカラムのみを抽出
-        $habit_id = Habit::where('user_id', '=', $user_id)->value('id'); 
+        $habit_id = Habit::where('user_id', '=', $user_id)->value('id');
+
+        // 今日の日付を取得
+        $today = date('Y-m-d');
 
         // 習慣の登録が無い場合、新規登録画面を表示
         if (empty($habit_id)) {
@@ -62,7 +65,7 @@ class HabitController extends Controller
 
         } else { // 習慣の登録が1つ以上ある場合、習慣一覧（トップ画面）を表示
 
-            return view('habit.index', compact('habit_list'));
+            return view('habit.index', compact('habit_list', 'today'));
             
         }
     }
@@ -73,28 +76,22 @@ class HabitController extends Controller
         // バリデーション
         $request->validate([
 
-            'habit_selection' => 'required',
             'achievement_date' => [
-                'required',
                 Rule::unique('records', 'achieved_at')
-                ->where('habit_id', $request->habit_selection)
+                ->where('habit_id', $request->habit_id)
             ]],
             [
-            'habit_selection.required' => '習慣を選択してください。',
-            'achievement_date.required' => '日付を選択してください。',
             'achievement_date.unique' => 'この日付は記録されています。'
             ]
         );
 
         //バリデーションにパスした後の処理
         Record::create([
-            'habit_id' => $request->habit_selection,
+            'habit_id' => $request->habit_id,
             'achieved_at' => $request->achievement_date
         ]);
 
-        $habit_id = $request->habit_selection;
-
-        return view('habit.finish', compact('habit_id'));
+        return back();
     }
 
     // 習慣の名前、目標を編集する画面を表示
