@@ -6,7 +6,13 @@
             
             <div class="p-4 sm:p-8 bg-white shadow sm:rounded-lg">
                 <p class="text-xl font-medium text-gray-700 mb-4">
-                    実績を記録しましょう!
+                    <!-- 実績を登録した場合 -->
+                    @if(session()->has('achievement_date'))
+                        お疲れ様でした！
+                    <!-- 未登録の場合 -->    
+                    @else
+                        実績を記録しましょう!
+                    @endif
                 </p>
                 <!-- エラーメッセージ -->
                 @if ($errors->any())
@@ -34,7 +40,7 @@
                             <a href="/habit/memo/{{ $habit_item->id }}" class="ml-2 inline-flex items-center px-4 py-2 bg-emerald-400 border border-transparent rounded-full font-semibold text-sm 
                             text-white uppercase tracking-widest hover:text-white focus:bg-emerald-500 active:bg-emerald-600 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 transition ease-in-out duration-150">メモ</a>
                         </form>
-                    </div> 
+                    </div>
                 @endforeach
                 
                 <!-- ペジネーション -->

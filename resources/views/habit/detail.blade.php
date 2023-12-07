@@ -107,7 +107,7 @@
                 
                 <div class="justify-center flex">
                     <a href="{{ route('memo.show_from_detail', ['id' => $habit_detail->id, 'ym' => $ym]) }}" 
-                    class="bg-emerald-400 text-base text-white py-1 px-2 my-2 rounded-full">メモに移動</a> 
+                    class="bg-emerald-400 text-base text-white py-1 px-2 my-2 rounded-full">メモへ移動</a> 
                 </div>
 
             </div>
@@ -195,7 +195,7 @@
                             <span class="text-amber-400">● </span>アーカイブに移動する
                         </a></li>
                     @endif
-                    <li class=""><a href="/habit/destroy/{{ $habit_detail->id }}">
+                    <li class=""><a href="{{ route('habit.show_deletion', ['id' => $habit_detail->id]) }}">
                         <span class="text-amber-400">● </span>習慣を削除する
                     </a></li>
                 </ul>

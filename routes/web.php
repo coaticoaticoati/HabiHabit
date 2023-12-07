@@ -54,7 +54,7 @@ Route::get('habit/edit/{id}', [HabitController::class, 'show_habit_name_edit'])-
 Route::patch('habit/edit/{id}', [HabitController::class, 'update_habit_name'])->name('habit.update_name');  
 
 // 習慣削除の確認画面を表示
-Route::get('habit/destroy/{id}', [HabitController::class, 'show_habit_deletion'])->middleware('auth');
+Route::get('habit/destroy/{id}', [HabitController::class, 'show_habit_deletion'])->name('habit.show_deletion')->middleware('auth');
 
 // 習慣を削除
 Route::delete('habit/destroy/{id}', [HabitController::class, 'destroy_habit'])->name('habit.destroy');
@@ -84,7 +84,7 @@ Route::patch('habit/edit-memo/{id}/{day}', [MemoController::class, 'update_memo'
 
 
 // アーカイブ保存の確認画面を表示
-Route::get('habit/save-archive/{id}', [ArchiveController::class, 'show_archive_confirmation'])->middleware('auth');
+Route::get('habit/save-archive/{id}', [ArchiveController::class, 'show_archive_confirmation'])->name('archive.show_confirmation')->middleware('auth');
 
 // アーカイブに保存
 Route::post('habit/archive', [ArchiveController::class, 'store_archive'])->name('archive.store');

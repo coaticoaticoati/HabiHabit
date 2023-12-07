@@ -8,10 +8,10 @@
                 @method('delete')
                 <div class="p-4 sm:p-8 bg-white shadow sm:rounded-lg">
                     <div class="w-full flex flex-col">
-                        <label class="text-lg font-medium text-gray-700">本当に削除しますか?</label>
+                        <label class="text-lg font-medium text-gray-700">{{ $habit_detail->name }}を本当に削除しますか?</label>
                         <div class="mt-5">
                             <x-primary-button name="delete_habit" value="{{ $habit_detail->id }}">
-                                習慣を削除
+                                削除
                             </x-primary-button>
                         </div>
                     </div>

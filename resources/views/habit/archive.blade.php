@@ -8,7 +8,7 @@
                     アーカイブ一覧
                 </p>
                 @foreach ($archive_list as $archive_item)
-                    <p class="text-xl text-gray-700 border-t border-gray-200/75 pt-4 mb-2 mt-2">
+                    <p class="text-xl text-gray-700 border-t border-gray-200/75 pt-4 mb-4 mt-4">
                         <a href="/habit/detail/{{ $archive_item->id }}"><span class="text-amber-400">● </span>{{ $archive_item->name }}</a>
                         @if (isset($archive_item->goal))
                             　目標：{{ $archive_item->goal }}</a>

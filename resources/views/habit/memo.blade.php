@@ -56,7 +56,7 @@
 
                 <div class="justify-center flex">    
                     <a href="{{ route('detail.show_from_memo', ['id' => $habit_detail->id, 'ym' => $ym]) }}" 
-                    class="bg-emerald-400 text-base text-white py-1 px-2 mt-4 mb-2 rounded-full">詳細に移動</a>
+                    class="bg-emerald-400 text-base text-white py-1 px-2 mt-4 mb-2 rounded-full">詳細へ移動</a>
                 </div>
 
                 <p class="justify-center flex mb-4 text-gray-700">日付を選択すると、メモを編集できます。 </p>

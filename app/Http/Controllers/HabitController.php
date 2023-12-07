@@ -91,7 +91,9 @@ class HabitController extends Controller
             'achieved_at' => $request->achievement_date
         ]);
 
-        return back();
+        $achievement_date = $request->achievement_date;
+
+        return back()->with('achievement_date', $achievement_date);
     }
 
     // 習慣の名前、目標を編集する画面を表示
