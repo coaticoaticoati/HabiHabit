@@ -183,15 +183,15 @@
             <div class="p-4 sm:p-8 bg-white shadow sm:rounded-lg">
                 <h2 class="text-xl font-medium text-gray-700 mb-4">習慣の設定</h2>
                 <ul class="text-lg text-gray-700">
-                    <li class="mb-2"><a href="/habit/edit/{{ $habit_detail->id }}">
+                    <li class="mb-2"><a href="{{ route('habit.show_name_edit', ['id' => $habit_detail->id]) }}">
                         <span class="text-amber-400">● </span>習慣・目標の内容を編集する
                     </a></li>
                     @if ($habit_detail->archive === 1)
-                        <li class="mb-2"><a href="/habit/archive/{{ $habit_detail->id }}">
+                        <li class="mb-2"><a href="{{ route('archive.update', ['id' => $habit_detail->id]) }}">
                             <span class="text-amber-400">● </span>挑戦中の習慣に戻す
                         </a></li>
                     @else
-                        <li class="mb-2"><a href="/habit/save-archive/{{ $habit_detail->id }}">
+                        <li class="mb-2"><a href="{{ route('archive.show_confirmation', ['id' => $habit_detail->id]) }}">
                             <span class="text-amber-400">● </span>アーカイブに移動する
                         </a></li>
                     @endif

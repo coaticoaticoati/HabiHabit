@@ -46,9 +46,6 @@ class MemoController extends Controller
         $prev = date('Y-m', strtotime('-1 month', $this_month_ts));
         $next = date('Y-m', strtotime('+1 month', $this_month_ts));
 
-        // 今日の年月日 例：2023-09-9
-        $today = date('Y-m-j'); // タイムスタンプは省略可。現在時刻になる。
-
         // 表示している月の日数（月末日）を取得
         $day_count = date('t', $this_month_ts); // 例：28～31
 
@@ -71,7 +68,7 @@ class MemoController extends Controller
         $this_year = date('Y');
         $this_month = date('n');
     
-            
+    
         // カレンダーにメモを表示するために
         // 配列を作るための準備
         $calendar_memo = [];
@@ -120,7 +117,7 @@ class MemoController extends Controller
         $week_jp = ['日', '月', '火', '水', '木', '金', '土'];
         
         return view('habit.memo', compact('habit_detail', 'this_month_ym', 'prev', 'next', 'ym',
-        'calendar_of_memo', 'week_jp', 'this_year', 'this_month', 'ym'));
+        'calendar_of_memo', 'week_jp', 'this_year', 'this_month'));
     }
 
     // メモ編集画面を表示

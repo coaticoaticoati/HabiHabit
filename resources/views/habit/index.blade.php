@@ -35,9 +35,9 @@
                             class="text-gray-700 border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm ml-4">
                             <input type="hidden" name="habit_id" value="{{ $habit_item->id }}">
                             <x-primary-button class="ml-2">登録</x-primary-button>
-                            <a href="/habit/detail/{{ $habit_item->id }}" class="ml-4 inline-flex items-center px-4 py-2 bg-emerald-400 border border-transparent rounded-full font-semibold text-sm 
+                            <a href="{{ route('detail.show', ['id' => $habit_item->id]) }}" class="ml-4 inline-flex items-center px-4 py-2 bg-emerald-400 border border-transparent rounded-full font-semibold text-sm 
                             text-white uppercase tracking-widest hover:text-white focus:bg-emerald-500 active:bg-emerald-600 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 transition ease-in-out duration-150">詳細</a>
-                            <a href="/habit/memo/{{ $habit_item->id }}" class="ml-2 inline-flex items-center px-4 py-2 bg-emerald-400 border border-transparent rounded-full font-semibold text-sm 
+                            <a href="{{ route('memo.show', ['id' => $habit_item->id]) }}" class="ml-2 inline-flex items-center px-4 py-2 bg-emerald-400 border border-transparent rounded-full font-semibold text-sm 
                             text-white uppercase tracking-widest hover:text-white focus:bg-emerald-500 active:bg-emerald-600 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 transition ease-in-out duration-150">メモ</a>
                         </form>
                     </div>
