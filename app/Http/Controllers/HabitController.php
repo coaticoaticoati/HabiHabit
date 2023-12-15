@@ -21,7 +21,7 @@ class HabitController extends Controller
     }
 
     // 新規登録のフォームの内容をデータベースに保存
-    public function store_habit_name(Request $request) { // Request $requestでフォームから送信されたデータを受けとっている
+    public function store_habit_name(Request $request) {
         
         // バリデーション
         $request->validate([
@@ -46,7 +46,7 @@ class HabitController extends Controller
     }
 
     // 習慣一覧を表示
-    public function index_list() { // habit/indexにアクセス後、ルート設定からshow_listメソッドへ
+    public function show_index() {
 
         $user_id = Auth::id();
         // habitテーブルからユーザーの登録済みの習慣を取得

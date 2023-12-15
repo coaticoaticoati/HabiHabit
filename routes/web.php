@@ -35,7 +35,7 @@ Route::middleware('auth')->group(function () {
 require __DIR__.'/auth.php';
 
 // トップ画面（習慣一覧）を表示
-Route::get('/', [HabitController::class, 'index_list'])->name('habit.index')->middleware('auth');
+Route::get('/', [HabitController::class, 'show_index'])->name('habit.index')->middleware('auth');
 
 // 実行した習慣を登録
 Route::post('index', [HabitController::class, 'store_habit'])->name('habit.store'); 
