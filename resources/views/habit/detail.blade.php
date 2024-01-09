@@ -166,7 +166,7 @@
                     @endif
                 
                 <!-- 休まず継続した期間の最大値 -->
-                <h3 class="text-lg font-medium text-gray-700"><span class="text-amber-400">● </span>継続（最大）</h3>
+                <h3 class="text-lg font-medium text-gray-700"><span class="text-amber-400">● </span>継続（最長）</h3>
                     <p class="mb-2 mt-1">
 
                     @if (is_array($max_continuous_days) && empty($max_continuous_days)) 

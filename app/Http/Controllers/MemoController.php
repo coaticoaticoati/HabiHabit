@@ -125,7 +125,7 @@ class MemoController extends Controller
         // メモの入力がある日は内容を取得
         $memo = Memo::where('habit_id', '=', $id)->whereDate('registered_on', '=', $day)->first();
 
-        $date= date('Y年m月j日', strtotime($day));
+        $date= date('Y年n月j日', strtotime($day));
         
         return view('habit.edit-memo', compact('memo', 'id', 'day', 'date'));
         

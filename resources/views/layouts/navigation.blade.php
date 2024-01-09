@@ -19,7 +19,7 @@
                         新規作成
                     </x-nav-link>
                     <x-nav-link :href="route('archive.show')" :active="request()->routeIs('archive.show')">
-                        ARCHIVE
+                        ARCHIVES
                     </x-nav-link>
                 </div>
             </div>
@@ -80,7 +80,7 @@
                 新規作成
             </x-responsive-nav-link>
             <x-responsive-nav-link :href="route('archive.show')" :active="request()->routeIs('archive.show')">
-                ARCHIVE
+                ARCHIVES
             </x-responsive-nav-link>
         </div>
 
