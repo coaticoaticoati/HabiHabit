@@ -16,16 +16,6 @@ class HabitController extends Controller
         return view('habit.start');
     }
 
-    public function show_register() {
-
-        return view('auth.register');
-    }
-
-    public function show_login() {
-
-        return view('auth.login');
-    }
-
     // 習慣の新規登録画面を表示
     public function create_habit() {
 

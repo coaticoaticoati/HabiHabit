@@ -105,6 +105,7 @@ class DetailController extends Controller
         $next = date('Y-m', strtotime('+1 month', $timestamp));
 
 
+        // カレンダー
         // 1日の曜日を取得
         $first_day_of_the_week = date('w', $timestamp);
 
@@ -156,11 +157,12 @@ class DetailController extends Controller
                 if ($date == $today) {
                     $calendar[$week_number][$day_number][1] = 'not_achieve_today';
                 }
+                
             // 達成した日が1日以上の場合    
             } else {
                 foreach ($habit_all as $habit_each) {
                 
-                    // DB上の値'2023-10-15 00:00:00'を'2023-10-9'に変更する
+                    // DB上の値'2023-10-15 00:00:00'を'2023-10-15'に変更する
                     $achieved_day = date('Y-m-j', strtotime($habit_each['achieved_at']));
 
                     // 達成している日の場合の処理   
