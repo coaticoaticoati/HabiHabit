@@ -7,7 +7,7 @@
 https://xs489274.xsrv.jp/
 
 #### デモアカウント
-メールアドレス：1@test
+メールアドレス：1@test  
 パスワード：test1234
 
 ## 開発理由
@@ -35,9 +35,9 @@ Tailwind CSS
 
 | テーブル名 |    定義    |  
 | --- | --------- |
-| habits |  |  
-| memos |  |  
-| records |  |  
+| habits | 習慣名 |  
+| memos | メモ |  
+| records | 習慣の記録 |  
 | users | ユーザーの登録情報 |  
 
 ## アプリケーションの特徴
