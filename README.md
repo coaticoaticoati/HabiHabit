@@ -41,7 +41,7 @@ Tailwind CSS
 
 | テーブル名 |    定義    |  
 | --- | --------- |
-| habits | 習慣名 |  
+| habits | 習慣・目標・アーカイブの情報 |  
 | memos | メモ情報 |  
 | records | 習慣の実績 |  
 | users | ユーザーの登録情報 |  
