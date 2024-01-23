@@ -36,9 +36,9 @@ Tailwind CSS
 
 ## DB設計
 #### ER図
+![habihabit_erd](https://github.com/coaticoaticoati/HabiHabit/assets/150308090/9fdb17f6-0947-4ec0-afed-b965ca8d3563)
 
 #### 各種テーブル
-
 | テーブル名 |    定義    |  
 | --- | --------- |
 | habits | 習慣・目標・アーカイブの情報 |  
